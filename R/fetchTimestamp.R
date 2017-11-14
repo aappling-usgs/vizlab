@@ -88,6 +88,7 @@ fetchTimestamp.file <- function(viz) {
   # pretty much always write something, unless both old and new timestamps exist
   # and they're equal
   if(is.na(old.timestamp) || is.na(new.timestamp) || (new.timestamp > old.timestamp)) {
+    if(is.na(new.timestamp)) new.timestamp <- formatTimestamp(as.POSIXct('1970-01-01 00:00:00', tz='UTC'))
     writeTimestamp(new.timestamp, viz, timestamp.mtime=new.timestamp)
   }
   

@@ -14,9 +14,12 @@ fetch <- function(viz) UseMethod("fetch")
 #' @export
 fetch.character <- function(viz) {
   # get the fetching information for this data ID from viz.yaml
+  id <- viz
   viz <- as.viz(viz)
   viz <- as.fetcher(viz)
-  fetch(viz)
+  out <- fetch(viz)
+  updateTimestamp(id, verbose=FALSE)
+  return(out)
 }
 
 #' \code{fetch.file} currently does nothing. It exists to communicate that
@@ -92,22 +95,6 @@ fetch.usgs_watermark <- function(viz) {
   xml2::xml_add_child(g.watermark, 'path', d = usgs.d, id = 'usgs-watermark-text', 'class' = 'watermark')
   xml2::xml_add_child(g.watermark, 'path', d = wave.d, id = 'usgs-watermark-wave', 'class' = 'watermark')
   xml2::write_xml(x = g.watermark, viz[['location']])
-}
-
-#' \code{fetch.none} skips this fetch
-#'
-#' @rdname fetch
-#' @export
-fetch.none <- function(viz) {
-  invisible()
-}
-
-#' \code{fetchTimestamp.none} skips this fetchTimestamp
-#'
-#' @rdname fetch
-#' @export
-fetchTimestamp.none <- function(viz) {
-  invisible()
 }
 
 ### Set up fetcher class
