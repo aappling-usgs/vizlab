@@ -96,7 +96,7 @@ fetchTimestamp.file <- function(viz) {
   invisible()
 }
 
-fetchTimestamp.usgs_watermark <- fetchTimestamp.file
+fetchTimestamp.usgs_watermark <- alwaysCurrent
 
 #' `fetchTimestamp.url` checks a URL for a timestamp. The URL headers must
 #' include a 'last-modified' field; otherwise, this method breaks and you should
