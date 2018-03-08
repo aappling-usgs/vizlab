@@ -141,7 +141,8 @@ writeTimestamp <- function(new.timestamp, viz, timestamp.mtime=NA) {
 #' @param verbose logical to pass on to `remake::make()`
 #' @export
 updateTimestamp <- function(viz, verbose=FALSE) {
-  timestampTarget <- locateTimestampFile(viz$id)
+  if('viz' %in% class(viz)) viz <- viz$id
+  timestampTarget <- locateTimestampFile(viz)
   remake::delete(target_names = timestampTarget, remake_file='remake.yaml', verbose=verbose)
   remake::make(target_names = timestampTarget, remake_file='remake.yaml', verbose=verbose)
 }

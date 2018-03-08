@@ -57,7 +57,7 @@ exceededTimeToLive <- function(id) {
   } else {
     ttl <- getPreferences()[['timetolive']][[id]]
     old.timestamp <- readTimestamp(viz)
-    exceeded <- Sys.time() > old.timestamp + ttl
+    exceeded <- is.na(old.timestamp) || (Sys.time() > old.timestamp + ttl)
   }
   return(exceeded)
 }

@@ -7,8 +7,6 @@
 \alias{fetch.sciencebase}
 \alias{fetch.url}
 \alias{fetch.usgs_watermark}
-\alias{fetch.none}
-\alias{fetchTimestamp.none}
 \title{Ensure data is on the local file system}
 \usage{
 fetch(viz)
@@ -22,10 +20,6 @@ fetch(viz)
 \method{fetch}{url}(viz)
 
 \method{fetch}{usgs_watermark}(viz)
-
-\method{fetch}{none}(viz)
-
-\method{fetchTimestamp}{none}(viz)
 }
 \arguments{
 \item{viz}{the identifier for this data item in viz.yaml}
@@ -44,8 +38,4 @@ the .file type is an option for data items.
 \code{fetch.url} downloads a file from the specified URL.
 
 \code{fetch.usgs_watermark} grabs the USGS watermark
-
-\code{fetch.none} skips this fetch
-
-\code{fetchTimestamp.none} skips this fetchTimestamp
 }
